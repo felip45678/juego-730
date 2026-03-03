@@ -79,11 +79,11 @@
       // Esta constante toma el tiempo que debe esperar la promesa hasta seguir ejecutando el código
       const esperar = (segundos) => new Promise(resolve => setTimeout(resolve, segundos * 1000));
       
+      var maquinav=0;
       // Se debe usar una async function para poder usar el await (y la promesa) 
       async function Plantarse() {
         document.getElementById("sacar").disabled = true;
-        var maquinav=0;
-        while(maquinav<=valorMax && plantado==true){
+        while(maquinav<valorMax){
              var nuevaImagen = document.createElement("img");
   
               // 2. Le asignamos la ruta de la carta
@@ -96,7 +96,25 @@
               console.log(arrayCartas.length);
               document.getElementById("cartasMaquina").appendChild(nuevaImagen);
               await esperar(1); // Usamos el await para que la máquina no saque todas sus cartas de golpe  
-        }
-      }
+            }
+           if (maquinav > 7.5) {
+        // La máquina se pasó. Gana el jugador.
+        document.body.style.backgroundColor = "#27F550"; // Verde
+    } 
+    else if (maquinav >= valorMax) {
+        // La máquina te iguala o supera sin pasarse. Gana la máquina.
+        document.body.style.backgroundColor = "#F52727"; // Rojo (ejemplo)
+    } 
+    else {
+        // Este caso se daría si tú te pasaste de 7.5 antes de darle a plantarse
+        // o por alguna regla especial.
+        document.body.style.backgroundColor = "#F52727"; // Rojo
+    }
+}
+            
+            console.log(maquinav);
+            console.log(valorMax);
       
+
+    
 
