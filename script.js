@@ -58,8 +58,7 @@
       
       var valorMax = 0;
       function SacarCarta() {
-          if (valorMax<=7.5) {
-            if (plantado==false) {
+          if (valorMax<=7.5) { 
             // 1. CREAMOS una nueva etiqueta <img>
             var nuevaImagen = document.createElement("img");
 
@@ -71,29 +70,33 @@
         
             arrayCartas.splice(cartaAleatoria, 1); //array.splice(indice, cantidad);cantidad: Cuántos elementos quieres eliminar a partir de ahí (en nuestro caso, suele ser 1).
             console.log(arrayCartas.length);
-            document.getElementById("tapete").appendChild(nuevaImagen);
-            }
+            document.getElementById("cartasJugador").appendChild(nuevaImagen);
+            
+           
           }
       }
-
-      var plantado=false;
-      function Plantarse() {
-        plantado=true;
+      
+      // Esta constante toma el tiempo que debe esperar la promesa hasta seguir ejecutando el código
+      const esperar = (segundos) => new Promise(resolve => setTimeout(resolve, segundos * 1000));
+      
+      // Se debe usar una async function para poder usar el await (y la promesa) 
+      async function Plantarse() {
+        document.getElementById("sacar").disabled = true;
+        var maquinav=0;
+        while(maquinav<=valorMax && plantado==true){
+             var nuevaImagen = document.createElement("img");
+  
+              // 2. Le asignamos la ruta de la carta
+              var cartaAleatoria = Math.floor(Math.random() * arrayCartas.length);
+              var elegido = arrayCartas[cartaAleatoria];
+              maquinav+= elegido.valor;
+              nuevaImagen.src = elegido.url;
+          
+              arrayCartas.splice(cartaAleatoria, 1); //array.splice(indice, cantidad);cantidad: Cuántos elementos quieres eliminar a partir de ahí (en nuestro caso, suele ser 1).
+              console.log(arrayCartas.length);
+              document.getElementById("cartasMaquina").appendChild(nuevaImagen);
+              await esperar(1); // Usamos el await para que la máquina no saque todas sus cartas de golpe  
+        }
       }
-      var maquinav=0;
-      while(maquinav<=valorMax && plantado==true){
-           var nuevaImagen = document.createElement("img");
-
-            // 2. Le asignamos la ruta de la carta
-            var cartaAleatoria = Math.floor(Math.random() * arrayCartas.length);
-            var elegido = arrayCartas[cartaAleatoria];
-            maquinav+= elegido.valor;
-            nuevaImagen.src = elegido.url;
-        
-            arrayCartas.splice(cartaAleatoria, 1); //array.splice(indice, cantidad);cantidad: Cuántos elementos quieres eliminar a partir de ahí (en nuestro caso, suele ser 1).
-            console.log(arrayCartas.length);
-            document.getElementById("ee").appendChild(nuevaImagen);
-      }
-    
       
 
