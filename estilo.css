@@ -1,40 +1,56 @@
 /* 1. Fondo y Estilo General */
 body {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('imagenes/fondoCasino.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('imagenes/fondoCasino.jpg');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
-    height: 100vh;
+    min-height: 100vh; /* Cambiamos height por min-height */
     margin: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: white;
-    overflow: hidden; /* Evita que salgan barras de scroll feas */
+    justify-content: space-around; /* Distribuye el espacio de forma equitativa */
+    padding: 20px 0;
+    box-sizing: border-box;
+    overflow: hidden; 
 }
 
 /* 2. Contenedores de Cartas */
+/* 1. Contenedores: Añadimos position relative */
 #cartasJugador, #cartasMaquina {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 180px;
-    margin: 20px 0;
-    perspective: 1000px; /* Efecto 3D */
+    width: 100%;
+    min-height: 180px; /* Espacio reservado para que no salte el diseño al aparecer cartas */
+    position: relative;
 }
 
-/* Estilo para las imágenes de las cartas */
+/* 3. El contenedor de botones */
+.controles {
+    z-index: 100; /* Asegura que los botones siempre estén por encima de todo */
+    display: flex;
+    gap: 10px;
+    margin: 10px 0;
+}
+/* 2. Estilo para las imágenes: Añadimos position relative y quitamos overflow del body si da problemas */
 img {
-    width: 120px;
+    width: 110px; /* Un pelín más pequeñas para que quepan mejor */
     height: auto;
     border-radius: 8px;
-    margin: -20px; /* Efecto de cartas solapadas como en la mano */
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s ease, margin 0.3s ease;
+    margin-left: -50px; 
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.8);
+    transition: transform 0.3s ease;
     animation: aparecer 0.5s ease-out;
+    position: relative; 
+    background-color: #eee;
 }
+
+/* Evitamos que la primera carta se mueva a la izquierda */
+img:first-child {
+    margin-left: 0;
+}
+
+/* El resto de tu código de botones y animaciones está PERFECTO, no lo toques */
 
 img:hover {
     transform: translateY(-20px) rotate(5deg);
@@ -88,17 +104,28 @@ button:disabled {
     cursor: not-allowed;
 }
 
-/* 4. Textos */
+/* 5. Texto del título y Puntuación */
 #letras {
+    color: #f1c40f !important; /* Dorado brillante */
+    font-family: 'Segoe UI', Arial, sans-serif;
     font-size: 2rem;
-    font-weight: 800;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
-    color: #f1c40f;
-    margin: 10px 0;
+    font-weight: bold;
+    text-align: center;
     text-transform: uppercase;
     letter-spacing: 2px;
+    
+    background: rgba(0, 0, 0, 0.8); /* Fondo mucho más oscuro para contraste */
+    padding: 15px 40px;
+    border-radius: 15px;
+    border: 2px solid #d4af37;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+    
+    /* Aseguramos que no se colapse */
+    min-width: 300px;
+    margin-top: 20px;
+    display: inline-block;
+    z-index: 1000;
 }
-
 #sacar {
     background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%);
     color: white;

@@ -1,30 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="script.js"></script>
-    <link rel="stylesheet" href="estilo.css"></style>
+    <title>Siete y Media Casino</title>
+    <script src="script.js" defer></script> <link rel="stylesheet" href="estilo.css">
 </head>
+
 <body>
+    <p id="letras">Siete y Media</p>
     
-    <button id="sacar" onclick="SacarCarta()">SacarCarta</button>
-    <button onclick="Plantarse()">Plantarse</button>
-    <br>
+    <div id="cartasMaquina"></div>
     
-    <div id="cartasJugador"></div>
-    <p id="letras"></p>
-    <div id="cartasMaquina"></div>
-    <div class="mesa-juego">
-    <h1 id="letras">Siete y Media</h1>
-    <div id="cartasMaquina"></div>
     <div class="controles">
-        <button id="sacar" onclick="SacarCarta()">Pedir Carta</button>
+        <button id="sacar" onclick="SacarCarta()">Sacar Carta</button>
         <button onclick="Plantarse()">Plantarse</button>
     </div>
-    <div id="cartasJugador"></div>
-</div>
     
+    <div id="cartasJugador"></div>
 </body>
 </html>
