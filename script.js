@@ -57,8 +57,10 @@
                           bastos1,bastos2,bastos3,bastos4,bastos5,bastos6,bastos7,caballobastos,reybastos,sotabastos];
       
       var valorMax = 0;
+      var capaZ=0;
       function SacarCarta() {
           if (valorMax<=7.5) { 
+            
             // 1. CREAMOS una nueva etiqueta <img>
             var nuevaImagen = document.createElement("img");
 
@@ -67,11 +69,16 @@
             var elegido = arrayCartas[cartaAleatoria];
             valorMax += elegido.valor;
             nuevaImagen.src = elegido.url;
-        
+             nuevaImagen.style.zIndex = capaZ; 
+            capaZ++; //
             arrayCartas.splice(cartaAleatoria, 1); //array.splice(indice, cantidad);cantidad: Cuántos elementos quieres eliminar a partir de ahí (en nuestro caso, suele ser 1).
             console.log(arrayCartas.length);
             document.getElementById("cartasJugador").appendChild(nuevaImagen);
-            
+            if (valorMax > 7.5) {
+            document.body.style.backgroundImage = "url(imagenes/perd.jpg)"; // Rojo
+            document.getElementById("sacar").disabled = true; // Bloqueamos botones
+            console.log("Te has pasado de 7.5. ¡Gana la máquina!");
+            }
            
           }
       }
@@ -82,8 +89,14 @@
       var maquinav=0;
       // Se debe usar una async function para poder usar el await (y la promesa) 
       async function Plantarse() {
+        document.getElementById("letras").innerHTML="Máquina";
         document.getElementById("sacar").disabled = true;
-        while(maquinav<valorMax){
+        // Si el jugador ya se pasó, no hace falta que la máquina saque cartas
+    if (valorMax > 7.5) {
+        document.body.style.backgroundImage = "url(imagenes/perd.jpg)";
+        return; 
+    }
+        while(maquinav<valorMax && maquinav<=7.5){
              var nuevaImagen = document.createElement("img");
   
               // 2. Le asignamos la ruta de la carta
@@ -97,24 +110,24 @@
               document.getElementById("cartasMaquina").appendChild(nuevaImagen);
               await esperar(1); // Usamos el await para que la máquina no saque todas sus cartas de golpe  
             }
-           if (maquinav > 7.5) {
-        // La máquina se pasó. Gana el jugador.
-        document.body.style.backgroundColor = "#27F550"; // Verde
-    } 
-    else if (maquinav >= valorMax) {
-        // La máquina te iguala o supera sin pasarse. Gana la máquina.
-        document.body.style.backgroundColor = "#F52727"; // Rojo (ejemplo)
-    } 
-    else {
-        // Este caso se daría si tú te pasaste de 7.5 antes de darle a plantarse
-        // o por alguna regla especial.
-        document.body.style.backgroundColor = "#F52727"; // Rojo
-    }
-}
+            if (maquinav > 7.5) {
+         // La máquina se pasó. Gana el jugador.
+         document.body.style.backgroundImage = "url(imagenes/gan.png)"; // Verde
+     } 
+     else if (maquinav >= valorMax) {
+         // La máquina te iguala o supera sin pasarse. Gana la máquina.
+         document.body.style.backgroundImage ="url(imagenes/perd.jpg)"; // Rojo (ejemplo)
+     } 
+     else {
+         // Este caso se daría si tú te pasaste de 7.5 antes de darle a plantarse
+         // o por alguna regla especial.
+         document.body.style.backgroundImage = "url(imagenes/perd.jpg)"; // Rojo
+     }
+     console.log(maquinav);
+     console.log(valorMax);
+
+        }
             
-            console.log(maquinav);
-            console.log(valorMax);
-      
 
     
 
