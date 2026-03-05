@@ -19,5 +19,5 @@ El objetivo es acercarse lo más posible a **7 puntos y medio** sin pasarse. En 
 
 ## 🚀 Instalación y Uso
 
-Para ejecutar este juego localmente, solo tiene que clonar este repositorio y ejecutar el archivo index.html
+Para ejecutar este juego localmente, solo tiene que clonar este repositorio y abrir el archivo index.html en su navegador
 
