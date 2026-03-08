@@ -69,9 +69,8 @@ function SacarCarta() {
 
         valorMax += elegido.valor;
         
-        // --- ACTUALIZACIÓN DE PUNTUACIÓN EN TIEMPO REAL ---
+        // Actualización de puntos
         document.getElementById("letras").innerHTML = "Tu puntuación: " + valorMax;
-        // --------------------------------------------------
 
         nuevaImagen.src = elegido.url;
         nuevaImagen.style.zIndex = capaZ;

@@ -1,40 +1,39 @@
-/* 1. Fondo y Estilo General */
+/* Fondo y Estilo General */
 body {
     background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('imagenes/fondoCasino.jpg');
     background-size: cover;
     background-position: center;
-    min-height: 100vh; /* Cambiamos height por min-height */
+    min-height: 100vh; 
     margin: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around; /* Distribuye el espacio de forma equitativa */
+    justify-content: space-around; 
     padding: 20px 0;
     box-sizing: border-box;
     overflow: hidden; 
 }
 
-/* 2. Contenedores de Cartas */
-/* 1. Contenedores: Añadimos position relative */
+/* Contenedores de Cartas */
 #cartasJugador, #cartasMaquina {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    min-height: 180px; /* Espacio reservado para que no salte el diseño al aparecer cartas */
+    min-height: 180px; 
     position: relative;
 }
 
-/* 3. El contenedor de botones */
+/* El contenedor de botones */
 .controles {
-    z-index: 100; /* Asegura que los botones siempre estén por encima de todo */
+    z-index: 100; 
     display: flex;
     gap: 10px;
     margin: 10px 0;
 }
-/* 2. Estilo para las imágenes: Añadimos position relative y quitamos overflow del body si da problemas */
+/* Estilo para las imágenes */
 img {
-    width: 110px; /* Un pelín más pequeñas para que quepan mejor */
+    width: 110px; 
     height: auto;
     border-radius: 8px;
     margin-left: -50px; 
@@ -50,7 +49,6 @@ img:first-child {
     margin-left: 0;
 }
 
-/* El resto de tu código de botones y animaciones está PERFECTO, no lo toques */
 
 img:hover {
     transform: translateY(-20px) rotate(5deg);
@@ -70,7 +68,7 @@ img:hover {
     }
 }
 
-/* 3. Botones Estilo Casino */
+/* Botones Estilo Casino */
 button {
     background: linear-gradient(135deg, #d4af37 0%, #aa891a 100%); /* Color oro */
     border: 2px solid #5c4b12;
@@ -104,9 +102,9 @@ button:disabled {
     cursor: not-allowed;
 }
 
-/* 5. Texto del título y Puntuación */
+/* Texto del título y Puntuación */
 #letras {
-    color: #f1c40f !important; /* Dorado brillante */
+    color: #f1c40f !important; 
     font-family: 'Segoe UI', Arial, sans-serif;
     font-size: 2rem;
     font-weight: bold;
@@ -114,13 +112,13 @@ button:disabled {
     text-transform: uppercase;
     letter-spacing: 2px;
     
-    background: rgba(0, 0, 0, 0.8); /* Fondo mucho más oscuro para contraste */
+    background: rgba(0, 0, 0, 0.8); 
     padding: 15px 40px;
     border-radius: 15px;
     border: 2px solid #d4af37;
     box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
     
-    /* Aseguramos que no se colapse */
+   
     min-width: 300px;
     margin-top: 20px;
     display: inline-block;
